@@ -2,7 +2,7 @@
   <div id="app">
     <Menu />
     <div id="view">
-      <User />
+      <router-view></router-view>
     </div>
     <Footer />
   </div>
@@ -11,14 +11,12 @@
 <script>
 import Menu from './components/common/Menu.vue'
 import Footer from './components/common/Footer.vue'
-import User from './components/users/User.vue'
 
 export default {
   name: 'app',
   components: {
     Menu,
-    Footer,
-    User
+    Footer
   }
 }
 </script>
