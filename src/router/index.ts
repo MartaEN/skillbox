@@ -1,16 +1,17 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from '../views/Home.vue';
-import About from '../views/About.vue';
-import Users from '../views/Users.vue';
-import User from '../views/User.vue';
-import UserProfile from '../views/UserProfile.vue';
-import UserPosts from '../views/UserPosts.vue';
-import UserFriends from '../views/UserFriends.vue';
-import Post from '../views/Post.vue';
-import PageNotFound from '../views/PageNotFound.vue';
+import Home from '@/components/home/Home.vue';
+import PageNotFound from '@/components/common/PageNotFound.vue';
 import {RouteNames} from '@/router/RouteNames';
 import {AuthService} from '@/common/services/AuthService';
+import MyProfile from '@/components/users/MyProfile.vue';
+import Skills from '@/components/skills/Skills.vue';
+import Technology from '@/components/skills/Technology.vue';
+import TechnologyProfile from '@/components/skills/TechnologyProfile.vue';
+import TechnologySkillTree from '@/components/skills/TechnologySkillTree.vue';
+import UserSkillGoals from '@/components/skills/UserSkillGoals.vue';
+import UserSkills from '@/components/skills/UserSkills.vue';
+
 
 Vue.use(Router);
 
@@ -29,48 +30,28 @@ const router = new Router({
       redirect: {name: RouteNames.Home}
     },
     {
-      path: '/about',
-      component: About,
-      name: RouteNames.About
+      path: '/skills',
+      component: Skills,
+      name: RouteNames.Skills
     },
     {
-      path: '/users',
-      component: Users,
-      name: RouteNames.Users,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: '/users/:userId',
-      component: User,
+      path: '/crafts/:technologyId',
+      component: Technology,
       props: true,
-      meta: {
-        requiresAuth: true
-      },
       children: [
         {
           path: '',
-          component: UserProfile,
-          name: RouteNames.UserProfile,
+          component: TechnologyProfile,
+          name: RouteNames.TechnologyProfile,
           props: true,
           meta: {
             noScroll: true
           }
         },
         {
-          path: 'posts',
-          component: UserPosts,
-          name: RouteNames.UserPosts,
-          props: true,
-          meta: {
-            noScroll: true
-          }
-        },
-        {
-          path: 'friends',
-          component: UserFriends,
-          name: RouteNames.UserFriends,
+          path: 'skills',
+          component: TechnologySkillTree,
+          name: RouteNames.TechnologySkillTree,
           props: true,
           meta: {
             noScroll: true
@@ -79,25 +60,34 @@ const router = new Router({
       ]
     },
     {
-      path: '/users/:userId/posts/:postId',
-      component: Post,
-      name: RouteNames.Post,
-      props: true,
-      meta: {
-        requiresAuth: true
-      }
+      path: '/my-profile',
+      component: MyProfile,
+      children: [
+        {
+          path: " ",
+          component: UserSkillGoals,
+          name: RouteNames.MySkillGoals,
+          props: true,
+          meta: {
+            noScroll: true
+          }
+        },
+        {
+          path: "skills",
+          component: UserSkills,
+          name: RouteNames.MySkills,
+          props: true,
+          meta: {
+            noScroll: true
+          }
+        }
+      ]
     },
     {
       path: '*',
       component: PageNotFound
     }
-  ],
-  scrollBehavior(to, from, savedPosition) {
-    if (to.meta.noScroll && from.meta.noScroll) {
-      return;
-    }
-    return savedPosition || {x: 0, y: 0};
-  }
+  ]
 });
 
 router.beforeEach((to, from, next) => {

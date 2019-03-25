@@ -1,13 +1,13 @@
 <template>
-  <div class="bottom-box">
-    <h6>Footer</h6>
+  <div class="footer content has-text-centered">
+	    Marta&apos;s first pancakes &copy 2019
   </div>
 </template>
 
-<style>
-    .bottom-box {
-        padding: 3px 0;
-        background-color: #BDBDBD;
-        color: #FFF;
-    }
+<style scoped>
+	.footer {
+		padding: 6px 0;
+		flex: 0;
+		margin-top: 24px;
+	}
 </style>

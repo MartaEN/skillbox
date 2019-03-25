@@ -1,13 +1,13 @@
 <template>
   <div class="container">
-    <h1 class="title is-1">Users</h1>
+    <h5 class="title is-3">Our crafts</h5>
     <ul>
       <router-link
-        v-for="user in users"
-        :key="user.id"
-        tag="li"
-        :to="{name: $routeNames.UserProfile, params: {userId: user.id}}">
-        <a href="">{{ user.name }}</a>
+		      v-for="technology in technologies"
+		      :key="technology.id"
+		      tag="li"
+		      :to="{name: $routeNames.TechnologyProfile, params: {technologyId: technology.id}}">
+        <a href="">{{ technology.name }}</a>
       </router-link>
     </ul>
   </div>
@@ -15,24 +15,31 @@
 
 <script lang="ts">
   import Vue from 'vue';
-  import {UserService} from '../common/services/UserService';
-  import {IUser} from '../common/interfaces/IUser';
+  import {ITechnologyShort} from '@/common/interfaces/ITechnologyShort';
 
-  interface IUsersData {
-    users: IUser[];
+  interface ITechnologies {
+    technologies: ITechnologyShort[];
   }
 
   export default Vue.extend({
-    data(): IUsersData {
+    data(): ITechnologies {
       return {
-        users: []
+        technologies: []
       };
     },
-    created() {
-      UserService.getUserList()
-        .then(users => {
-          this.users = users;
-        });
+	  created(): void {
+      this.technologies = [{
+        id: 'fight',
+        name: 'Fight'
+      },
+        {
+          id: 'feast',
+          name: 'Feast'
+        },
+        {
+          id: 'fix',
+          name: 'Fix'
+        }];
     }
   });
 </script>

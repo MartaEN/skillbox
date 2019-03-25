@@ -1,5 +1,9 @@
 @import '~bulma/bulma.sass';
 
+html, body {
+  height: 100%;
+}
+
 .container {
   max-width: 900px!important;
 }
@@ -19,8 +23,8 @@ a.is-active {
   }
 
   .logo {
-    width: $size-2;
-    height: $size-2;
+    width: $size-1;
+    height: $size-1;
     background: center /cover url('../assets/logo.png') no-repeat;
   }
 
