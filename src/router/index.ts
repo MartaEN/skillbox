@@ -11,6 +11,11 @@ import TechnologyProfile from '@/components/skills/TechnologyProfile.vue';
 import TechnologySkillTree from '@/components/skills/TechnologySkillTree.vue';
 import UserSkillGoals from '@/components/skills/UserSkillGoals.vue';
 import UserSkills from '@/components/skills/UserSkills.vue';
+import Login from '@/components/auth/Login.vue';
+import Register from '@/components/auth/Register.vue';
+import ResetPassword from '@/components/auth/ResetPassword.vue';
+import CreateAccount from '@/components/auth/CreateAccount.vue';
+import ClaimSkills from '@/components/auth/ClaimSkills.vue';
 
 
 Vue.use(Router);
@@ -29,6 +34,29 @@ const router = new Router({
       path: '/home',
       redirect: {name: RouteNames.Home}
     },
+	  { path: '/login',
+	  	component: Login,
+		  name: RouteNames.Login
+	  },
+	  { path: '/join',
+		  component: Register,
+		  children: [
+			  {
+			  	path: '',
+				  component: CreateAccount,
+				  name: RouteNames.CreateAccount
+			  },
+			  {
+			  	path: 'declare-skills',
+				  component: ClaimSkills,
+				  name: RouteNames.ClaimSkills
+			  }
+		  ]
+	  },
+	  { path: '/password-reset',
+		  component: ResetPassword,
+		  name: RouteNames.ResetPassword
+	  },
     {
       path: '/skills',
       component: Skills,

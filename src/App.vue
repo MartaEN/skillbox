@@ -13,6 +13,12 @@
 			          :to="{name: $routeNames.Skills}">Skills</router-link>
 	          <router-link
 				        :to="{name: $routeNames.MySkillGoals}">My Profile</router-link>
+	          <router-link
+		          v-if="!loggedIn"
+		          :to="{name: $routeNames.Login}">Sign in</router-link>
+	          <router-link
+		          v-if="!loggedIn"
+		          :to="{name: $routeNames.CreateAccount}">Sign up</router-link>
           </nav>
         </div>
       </div>

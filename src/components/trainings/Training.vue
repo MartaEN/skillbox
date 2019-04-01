@@ -1,4 +1,3 @@
-import {EnrollmentStatus} from "../../common/enums/EnrollmentStatus";
 <template>
 	<div class="modal is-active">
 		<div class="modal-background" @click="cancel"></div>

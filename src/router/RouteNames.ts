@@ -1,5 +1,9 @@
 export enum RouteNames {
   Home = 'Home',
+  Login = 'Login',
+  ResetPassword = 'ResetPassword',
+  CreateAccount = 'CreateAccount',
+  ClaimSkills = 'ClaimSkills',
   TechnologyProfile = 'TechnologyProfile',
   TechnologySkillTree = 'TechnologySkillTree',
   Skills = 'Skills',
