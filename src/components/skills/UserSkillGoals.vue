@@ -28,7 +28,11 @@
 						<span v-if="goal.skill.source==='P'"><i class="fas fa-user-shield" aria-hidden="true"></i></span>
 						<span v-if="goal.skill.source==='T'"><i class="fas fa-user-graduate" aria-hidden="true"></i></span></td>
 					<td class="has-text-centered">{{goal.targetLevel}}</td>
-					<td><span class="tag is-rounded" v-for="(option, index) in goal.trainingsSuggested" :key="index">{{option.training.title}}</span></td>
+					<td>
+						<button v-for="(option, index) in goal.trainingsSuggested" :key="index" class="tag is-rounded is-info"
+						        @click="toggleTrainingModal">{{option.training.title}}
+						</button>
+					</td>
 					<td class="has-text-centered"><a><i class="fas fa-backspace" aria-hidden="true"></i></a></td>
 				</tr>
 			</tbody>
@@ -38,6 +42,12 @@
 					:confirmFunction="addGoal"
 					v-on:operation-completed="toggleAddGoalModal"
 					v-on:operation-canceled="toggleAddGoalModal" />
+		</transition>
+		<transition name="fade">
+			<Training v-if="trainingModalShown"
+			              :confirmFunction="enroll"
+			              v-on:operation-completed="toggleTrainingModal"
+			              v-on:operation-canceled="toggleTrainingModal" />
 		</transition>
 	</div>
 </template>
@@ -50,7 +60,8 @@
 
 	interface IUserSkillGoalsDate {
 		goals: IUserSkillGoal[],
-		addGoalModalShown: false
+		addGoalModalShown: false,
+		trainingModalShown: false
 	}
 
 	export default Vue.extend({
@@ -61,63 +72,69 @@
 		data(): IUserSkillGoalsDate {
 			return {
 				goals: [],
-				addGoalModalShown: false
+				addGoalModalShown: false,
+				trainingModalShown: false
 			}
 		},
 		created() {
-			this.goals = [
-				{
-					skill: {
-						id: '1',
-						title: 'Bigfoot',
-						technology: {
-							id: 'fight',
-							name: 'Fight'
-						},
-						category: 'Melee',
-						versions: ['1.0', '2.0'],
-						level: 3.5,
-						updated: '2018-12-31',
-						source: 'P',
-					},
-					targetLevel: 4.0,
-					trainingsSuggested: []
-				},
-				{
-					skill: {
-						id: '5',
-						title: 'Shashlik',
-						technology: {
-							id: 'feast',
-							name: 'Feast'
-						},
-						category: 'Cookery',
-						versions: [],
-						level: 0.0,
-						updated: ' ',
-						source: ' ',
-					},
-					targetLevel: 1.0,
-					trainingsSuggested: [
-						{
-							training: {
-								id: '1',
-								title: 'Jerry\'s shop',
-								startingDate: '2019-04-01'
+			this.goals =
+				[
+					{
+						skill: {
+							id: '1',
+							title: 'Bigfoot',
+							technology: {
+								id: 'fight',
+								name: 'Fight'
 							},
-							enrollmentStatus: 'enrolled'
-						}
-
-					]
-				}
-			]
+							category: 'Melee',
+							versions: ['1.0', '2.0'],
+							level: 3.5,
+							updated: '2018-12-31',
+							source: 'P',
+						},
+						targetLevel: 4.0,
+						trainingsSuggested: []
+					},
+					{
+						skill: {
+							id: '5',
+							title: 'Shashlik',
+							technology: {
+								id: 'feast',
+								name: 'Feast'
+							},
+							category: 'Cookery',
+							versions: [],
+							level: 0.0,
+							updated: ' ',
+							source: ' ',
+						},
+						targetLevel: 1.0,
+						trainingsSuggested: [
+							{
+								training: {
+									id: '1',
+									title: 'Gogy\'s shop',
+									startingDate: '2019-04-01'
+								},
+								enrollmentStatus: 'enrolled'
+							}
+						]
+					}
+				]
 		},
 		methods: {
 			toggleAddGoalModal() {
 				this.addGoalModalShown = !this.addGoalModalShown;
 			},
+			toggleTrainingModal() {
+				this.trainingModalShown = !this.trainingModalShown;
+			},
 			addGoal() {
-				
+			},
+			enroll() {
+			
 			}
 		}
 	});
