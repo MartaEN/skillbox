@@ -24,8 +24,11 @@
 
 <script lang="ts">
   import Vue from 'vue';
+  import StarRating from 'vue-star-rating'
   import Footer from '@/components/common/Footer';
   import {AuthService} from './common/services/AuthService';
+
+  Vue.component('star-rating', StarRating);
 
   export default Vue.extend({
     components: {
