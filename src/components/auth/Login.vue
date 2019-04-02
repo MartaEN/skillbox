@@ -11,11 +11,11 @@
 				<div class="card-content">
 					<div class="field">
 					<div class="level">
-						<label class="label">Username</label>
+						<label class="label">Email</label>
 					</div>
 					<div class="control has-icons-left has-icons-right">
-						<input class="input" type="text" placeholder="Username">
-						<span class="icon is-small is-left"><i class="fas fa-user"></i></span>
+						<input class="input" type="email" placeholder="Email address">
+						<span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
 					</div>
 				</div>
 				<div class="field">

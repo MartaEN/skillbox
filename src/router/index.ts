@@ -16,6 +16,7 @@ import Register from '@/components/auth/Register.vue';
 import ResetPassword from '@/components/auth/ResetPassword.vue';
 import CreateAccount from '@/components/auth/CreateAccount.vue';
 import ClaimSkills from '@/components/auth/ClaimSkills.vue';
+import FillUserDetails from '@/components/auth/FillUserDetails.vue';
 
 
 Vue.use(Router);
@@ -45,6 +46,11 @@ const router = new Router({
 			  	path: '',
 				  component: CreateAccount,
 				  name: RouteNames.CreateAccount
+			  },
+			  {
+				  path: 'personal-details',
+				  component: FillUserDetails,
+				  name: RouteNames.FillUserDetails
 			  },
 			  {
 			  	path: 'declare-skills',

@@ -4,6 +4,7 @@ export enum RouteNames {
   ResetPassword = 'ResetPassword',
   CreateAccount = 'CreateAccount',
   ClaimSkills = 'ClaimSkills',
+  FillUserDetails = 'FillUserDetails',
   TechnologyProfile = 'TechnologyProfile',
   TechnologySkillTree = 'TechnologySkillTree',
   Skills = 'Skills',

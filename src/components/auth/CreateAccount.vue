@@ -2,13 +2,6 @@
 	<div class="content">
 		<div class="title is-4">Create your personal account</div>
 		<div class="field">
-			<label class="label">Username</label>
-			<div class="control has-icons-left has-icons-right">
-				<input class="input" type="text" placeholder="Username">
-				<span class="icon is-small is-left"><i class="fas fa-user"></i></span>
-			</div>
-		</div>
-		<div class="field">
 			<label class="label">Email address</label>
 			<div class="control has-icons-left has-icons-right">
 				<input class="input" type="email" placeholder="Your email address">
@@ -17,6 +10,13 @@
 		</div>
 		<div class="field">
 			<label class="label">Password</label>
+			<p class="control has-icons-left">
+				<input class="input" type="password" placeholder="Password">
+				<span class="icon is-small is-left"><i class="fas fa-lock"></i></span>
+			</p>
+		</div>
+		<div class="field">
+			<label class="label">Repeat password</label>
 			<p class="control has-icons-left">
 				<input class="input" type="password" placeholder="Password">
 				<span class="icon is-small is-left"><i class="fas fa-lock"></i></span>

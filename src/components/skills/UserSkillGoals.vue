@@ -1,5 +1,5 @@
 <template>
-	<div class="container">
+	<div class="content">
 		<div class="level-right">
 			<button class="button is-rounded is-info level-item"
 				@click="toggleAddGoalModal">

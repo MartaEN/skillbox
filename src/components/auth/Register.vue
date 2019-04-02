@@ -9,14 +9,20 @@
 		<div class="tabs">
       <ul>
 	      <router-link
+		      exact
 		      tag="li"
 		      :to="{name: $routeNames.CreateAccount}">
 		      <a href=""><div><b>Step 1:</b><br/>Set up your account</div></a>
         </router-link>
 	      <router-link
+			    tag="li"
+			    :to="{name: $routeNames.FillUserDetails}">
+		      <a href=""><div><b>Step 2:</b><br/>Fill in your details</div></a>
+        </router-link>
+	      <router-link
 		      tag="li"
 		      :to="{name: $routeNames.ClaimSkills}">
-          <a href=""><div><b>Step 2:</b><br/>Tell us your skills</div></a>
+          <a href=""><div><b>Step 3:</b><br/>Tell us your skills</div></a>
         </router-link>
       </ul>
     </div>
